@@ -1,4 +1,4 @@
-
+from fixture.application import Open_close_browser
 from fixture.application import Application
 import pytest
 
@@ -7,4 +7,9 @@ import pytest
 def app(request):
     fixture = Application()
     request.addfinalizer(fixture.destroy)
+    return fixture
+
+def ocb(request):
+    fixture = Open_close_browser()
+    request.addfinalizer(fixture.exit_browser)
     return fixture
