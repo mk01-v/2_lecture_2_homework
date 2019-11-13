@@ -1,3 +1,21 @@
+class KontaktHelper:
+
+    def __init__(self, app):
+        self.app = app
+
+    def open_home_page(self, driver):
+        driver.get("https://localhost/addressbook/")
+
+
+
+
+
+
+
+
+
+
+
 
 
 class GroupHelper:
