@@ -2,8 +2,8 @@ from selenium import webdriver
 from fixture.session import SessionHelper
 from fixture.group import GroupHelper
 
+from fixture.session import SessionHelperKontakt
 from fixture.group import KontaktHelper
-
 
 
 class Application():
@@ -26,7 +26,7 @@ class Open_close_browser:
     def __init__(self):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(60)
-        self.session = SessionHelper(self)
+        self.session = SessionHelperKontakt(self)
         self.kontakt = KontaktHelper(self)
 
     def open_start_page(self):
