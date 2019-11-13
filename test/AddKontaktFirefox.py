@@ -137,16 +137,6 @@ class AddKontaktFirefox(unittest.TestCase):
     def open_home_page(self, driver):
         driver.get("https://localhost/addressbook/")
 
-    def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
-        except NoSuchElementException as e: return False
-        return True
-    
-    def is_alert_present(self):
-        try: self.driver.switch_to_alert()
-        except NoAlertPresentException as e: return False
-        return True
-
     def tearDown(self):
         self.driver.quit()
 
