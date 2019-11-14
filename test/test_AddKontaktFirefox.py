@@ -21,6 +21,7 @@ def test_add_modif_kontakt(app):
                             secondary_notes=""))
     app.session.logout()
 
+
 def test_delete_kontakt(app):
     app.session.login(username="admin", password="secret")
     app.kontakt.delete_kontakt()
