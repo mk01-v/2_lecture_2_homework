@@ -10,3 +10,13 @@ def test_add_kontakt_firefox(app):
                             aday="1", amonth="January", ayear="2000", secondary_address2="Secondary-address: Michurina 10", secondary_home2="Secondary-home: 10",
                             secondary_notes="Secondary-notes: None"))
     app.session.logout()
+
+def test_add_modif_kontakt(app):
+    app.session.login(username="admin", password="secret")
+    app.kontakt.modif_kontakt(kontakt(username="Artur123123", middle_name="Middle_name: 1230000", last_name="", nickname="",
+                            title="", company="", address="", home="",
+                            mobile="", work="", fax="", email="",
+                            email2="", email3="", homepage="", bday="10", bmonth="October", byear="1992",
+                            aday="10", amonth="December", ayear="2000", secondary_address2="", secondary_home2="",
+                            secondary_notes=""))
+    app.session.logout()
