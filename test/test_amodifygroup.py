@@ -9,5 +9,5 @@ def test_modifgroup_name(app):
 
 def test_modifgroup_header(app):
     app.session.login(username="admin", password="secret")
-    app.group.modify_first_group(group(header="hhh1"))
+    app.group.modify_first_group(group(header="hhh41"))
     app.session.logout()
