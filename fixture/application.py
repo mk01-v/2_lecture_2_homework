@@ -7,7 +7,8 @@ from fixture.group import KontaktHelper
 class Application():
     def __init__(self):
         self.wd = webdriver.Firefox()
-        self.wd.implicitly_wait(60)
+        #период ожидания драйвером дождаться элементов
+        self.wd.implicitly_wait(5)
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
         self.kontakt = KontaktHelper(self)
