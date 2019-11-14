@@ -2,7 +2,12 @@
 from model.group import group
 
 
-def test_modifgroup(app):
+def test_modifgroup_name(app):
     app.session.login(username="admin", password="secret")
-    app.group.modify_group(group(name="hhh1", header="hhh2"))
+    app.group.modify_first_group(group(name="hhh1"))
+    app.session.logout()
+
+def test_modifgroup_header(app):
+    app.session.login(username="admin", password="secret")
+    app.group.modify_first_group(group(header="hhh1"))
     app.session.logout()
