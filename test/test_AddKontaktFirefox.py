@@ -20,3 +20,8 @@ def test_add_modif_kontakt(app):
                             aday="10", amonth="December", ayear="2000", secondary_address2="", secondary_home2="",
                             secondary_notes=""))
     app.session.logout()
+
+def test_delete_kontakt(app):
+    app.session.login(username="admin", password="secret")
+    app.kontakt.delete_kontakt()
+    app.session.logout()
