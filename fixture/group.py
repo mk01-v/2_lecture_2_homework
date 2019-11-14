@@ -183,6 +183,17 @@ class KontaktHelper:
             "(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]").click()
         self.return_to_main_home()
 
+    def delete_kontakt(self):
+        wd = self.app.wd
+        #self.open_group_page()
+        # select first group
+        wd.find_element_by_name("selected[]").click()
+        # submit deletion
+        wd.find_element_by_xpath("//input[@value='Delete']").click()
+        # закрытие диалогового окна подтверждением.
+        wd.switch_to_alert().accept()
+        self.return_to_main_home()
+
     def return_to_main_home(self):
         wd = self.app.wd
         # return groups page
