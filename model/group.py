@@ -1,7 +1,7 @@
 
 # make a class
 
-class group:
+class Group:
 
     def __init__(self, name=None, header=None):
         self.name = name
