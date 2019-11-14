@@ -149,10 +149,12 @@ class KontaktHelper:
         # choose bday
         wd.find_element_by_name("bday").click()
         Select(wd.find_element_by_name("bday")).select_by_visible_text(kontakt.bday)
+        # Необходимо закомментировать,т.к. в противном случае селектор не сохраняет значение.
         #wd.find_element_by_xpath(
         #    "(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[30]").click()
         wd.find_element_by_name("bmonth").click()
         Select(wd.find_element_by_name("bmonth")).select_by_visible_text(kontakt.bmonth)
+        # Необходимо закомментировать,т.к. в противном случае селектор не сохраняет значение.
         #wd.find_element_by_xpath(
         #    "(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[41]").click()
         wd.find_element_by_name("byear").click()
@@ -161,10 +163,12 @@ class KontaktHelper:
         # anniversary (годовщина)
         wd.find_element_by_name("aday").click()
         Select(wd.find_element_by_name("aday")).select_by_visible_text(kontakt.aday)
+        # Необходимо закомментировать,т.к. в противном случае селектор не сохраняет значение.
         #wd.find_element_by_xpath(
         #    "(.//*[normalize-space(text()) and normalize-space(.)='Anniversary:'])[1]/following::option[3]").click()
         wd.find_element_by_name("amonth").click()
         Select(wd.find_element_by_name("amonth")).select_by_visible_text(kontakt.amonth)
+        # Необходимо закомментировать,т.к. в противном случае селектор не сохраняет значение.
         #wd.find_element_by_xpath(
         #    "(.//*[normalize-space(text()) and normalize-space(.)='Anniversary:'])[1]/following::option[35]").click()
         wd.find_element_by_name("ayear").click()
@@ -235,7 +239,7 @@ class GroupHelper:
         wd.find_element_by_name("group_name").send_keys(group.name)
         wd.find_element_by_name("group_header").click()
         wd.find_element_by_name("group_header").clear()
-        wd.find_element_by_name("group_header").send_keys(group.name)
+        wd.find_element_by_name("group_header").send_keys(group.header)
         wd.find_element_by_name("update").click()
         self.return_to_group_page()
 
