@@ -32,13 +32,6 @@ class SessionHelper:
     def is_logged_in_as(self, username):
         wd = self.app.wd
         return wd.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='Address Book'])[1]/preceding::b[1]").text == "("+username+")"
-        #wd.find_element_by_css_selector("b").text == "("+username+")"
-        #wd.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='Address Book'])[1]/preceding::b[1]").text == "("+username+")"
-        #wd.find_element_by_css_selector("b").text == "("+username+")"
-            #wd.find_element_by_xpath(
-            #"(.//*[normalize-space(text()) and normalize-space(.)='Address Book'])[1]/preceding::b[1]").text == "("+username+")"
-        #return wd.find_element_by_id("//div[@id='top']/form/b").text == "("+username+")"
-        #return wd.find_element_by_xpath(".//*[normalize-space(text()) and normalize-space(.)='home'])[1]/preceding::b[1]").text == "("+username+")"
 
     def ensure_logout(self):
         wd = self.app.wd
