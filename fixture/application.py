@@ -14,6 +14,7 @@ class Application():
         self.group = GroupHelper(self)
         self.kontakt = KontaktHelper(self)
 
+    #Проверка текущей страницы.
     def is_valid(self):
         try:
             self.wd.current_url
