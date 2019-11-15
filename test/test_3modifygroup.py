@@ -1,6 +1,4 @@
-
 from model.group import Group
-
 
 def test_modifgroup_name(app):
     if app.group.count() == 0:
