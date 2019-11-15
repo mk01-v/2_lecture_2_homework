@@ -56,3 +56,41 @@ def test_modif_kontakt(app):
                                       secondary_address2="000",
                                       secondary_home2="000",
                                       secondary_notes="000"))
+
+def test_modif_kontakt2(app):
+    if app.kontakt.count_kontakt() == 0:
+        app.kontakt.create_kontakt(kontakt(username="11111",
+                                           middle_name="11111",
+                                           last_name="11111",
+                                           nickname="11111",
+                                           title="11111",
+                                           company="11111",
+                                           address="11111",
+                                           home="11111",
+                                           mobile="11111",
+                                           work="11111",
+                                           fax="11111",
+                                           email="11111",
+                                           email2="11111",
+                                           email3="11111",
+                                           homepage="11111",
+
+                                           bday="28",
+                                           bmonth="July",
+                                           byear="1992",
+
+                                           aday="1",
+                                           amonth="January",
+                                           ayear="2000",
+
+                                           secondary_address2="11111",
+                                           secondary_home2="11111",
+                                           secondary_notes="11111"))
+    app.kontakt.modif_kontakt(kontakt(username="66666",
+                                      bday="10",
+                                      bmonth="July",
+                                      byear="1992",
+
+                                      aday="1",
+                                      amonth="October",
+                                      ayear="2000"))
