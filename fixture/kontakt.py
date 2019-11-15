@@ -69,7 +69,6 @@ class KontaktHelper:
         self.change_field_value_kontakt("phone2", kontakt.secondary_home2)
         self.change_field_value_kontakt("notes", kontakt.secondary_notes)
 
-
     def change_field_value_kontakt(self, field_name, text):
         wd = self.app.wd
         if text is not None:
@@ -84,7 +83,6 @@ class KontaktHelper:
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
         self.fill_kontakt_form(kontakt)
         wd.find_element_by_name("update").click()
-
 
     def delete_kontakt(self):
         wd = self.app.wd
