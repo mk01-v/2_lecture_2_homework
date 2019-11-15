@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from model.kontakt import kontakt
 
 def test_add_kontakt_firefox(app):
