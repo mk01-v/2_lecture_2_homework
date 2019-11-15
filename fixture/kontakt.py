@@ -101,3 +101,8 @@ class KontaktHelper:
         wd = self.app.wd
         # return groups page
         wd.find_element_by_link_text("home").click()
+
+    def count_kontakt(self):
+        wd = self.app.wd
+        wd.find_element_by_link_text("home").click()
+        return len(wd.find_elements_by_name("selected[]"))
