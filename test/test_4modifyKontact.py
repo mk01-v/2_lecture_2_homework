@@ -17,13 +17,13 @@ def test_modif_kontakt(app):
                                       email3="",
                                       homepage="",
 
-                                      bday="10",
+                                      bday="1",
                                       bmonth="October",
-                                      byear="1992",
+                                      byear="1999",
 
-                                      aday="10",
+                                      aday="20",
                                       amonth="December",
-                                      ayear="2000",
+                                      ayear="1999",
 
                                       secondary_address2="",
                                       secondary_home2="",
