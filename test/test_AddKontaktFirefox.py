@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from model.group import kontakt
+from model.kontakt import kontakt
 
 def test_add_kontakt_firefox(app):
 
