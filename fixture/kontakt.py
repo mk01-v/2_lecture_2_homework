@@ -97,7 +97,7 @@ class KontaktHelper:
 
     def modif_kontakt(self, kontakt):
         wd = self.app.wd
-        #self.open_kontakt_page()
+        wd.find_element_by_link_text("home").click()
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
         wd.find_element_by_name("firstname").click()
@@ -188,7 +188,7 @@ class KontaktHelper:
 
     def delete_kontakt(self):
         wd = self.app.wd
-        #self.open_group_page()
+        wd.find_element_by_link_text("home").click()
         # select first group
         wd.find_element_by_name("selected[]").click()
         # submit deletion
