@@ -1,6 +1,5 @@
 from selenium.webdriver.support.ui import Select
 
-
 class KontaktHelper:
 
     def __init__(self, app):
