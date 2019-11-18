@@ -35,39 +35,25 @@ class KontaktHelper:
         self.change_field_value_kontakt("email2", kontakt.email2)
         self.change_field_value_kontakt("email3", kontakt.email3)
         self.change_field_value_kontakt("homepage", kontakt.homepage)
-        #
-        #
-        #
-        #Селекторы
-        wd.find_element_by_name("bday").click()
-        Select(wd.find_element_by_name("bday")).select_by_visible_text(kontakt.bday)
-        #wd.find_element_by_xpath(
-        #    "(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[30]").click()
-        wd.find_element_by_name("bmonth").click()
-        Select(wd.find_element_by_name("bmonth")).select_by_visible_text(kontakt.bmonth)
-        #wd.find_element_by_xpath(
-        #    "(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[41]").click()
-        wd.find_element_by_name("byear").click()
-        wd.find_element_by_name("byear").clear()
-        wd.find_element_by_name("byear").send_keys(kontakt.byear)
+
+        self.change_field_value_kontakt_selector("bday", kontakt.bday)
+        self.change_field_value_kontakt_selector("bmonth", kontakt.bmonth)
+        self.change_field_value_kontakt("byear", kontakt.byear)
+
         # anniversary (годовщина)
-        wd.find_element_by_name("aday").click()
-        Select(wd.find_element_by_name("aday")).select_by_visible_text(kontakt.aday)
-        #wd.find_element_by_xpath(
-        #    "(.//*[normalize-space(text()) and normalize-space(.)='Anniversary:'])[1]/following::option[3]").click()
-        wd.find_element_by_name("amonth").click()
-        Select(wd.find_element_by_name("amonth")).select_by_visible_text(kontakt.amonth)
-        #wd.find_element_by_xpath(
-        #    "(.//*[normalize-space(text()) and normalize-space(.)='Anniversary:'])[1]/following::option[35]").click()
-        wd.find_element_by_name("ayear").click()
-        wd.find_element_by_name("ayear").clear()
-        wd.find_element_by_name("ayear").send_keys(kontakt.ayear)
-        #
-        #
-        #
+        self.change_field_value_kontakt_selector("aday", kontakt.aday)
+        self.change_field_value_kontakt_selector("amonth", kontakt.amonth)
+        self.change_field_value_kontakt("ayear", kontakt.ayear)
+
         self.change_field_value_kontakt("address2", kontakt.secondary_address2)
         self.change_field_value_kontakt("phone2", kontakt.secondary_home2)
         self.change_field_value_kontakt("notes", kontakt.secondary_notes)
+
+    def change_field_value_kontakt_selector(self, field_name, text):
+        wd = self.app.wd
+        if text is not None:
+            wd.find_element_by_name(field_name).click()
+            Select(wd.find_element_by_name(field_name)).select_by_visible_text(text)
 
     def change_field_value_kontakt(self, field_name, text):
         wd = self.app.wd
