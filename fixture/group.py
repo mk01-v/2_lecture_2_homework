@@ -1,3 +1,5 @@
+from model.group import Group
+
 
 class GroupHelper:
 
@@ -69,3 +71,51 @@ class GroupHelper:
         wd = self.app.wd
         self.open_group_page()
         return len(wd.find_elements_by_name("selected[]"))
+
+    def get_group_list(self):
+        wd = self.app.wd
+        self.open_group_page()
+        grouplist = []
+        #Проверка по наименованию групп.
+        #Проверить можно в браузере что выберется. Ввести в консоли f12 $$('span.group').
+        for element in wd.find_elements_by_css_selector("span.group"):
+            #get_text() - вызывает метод, а нужно обращаться к свойству текст: text.
+            text = element.text
+            id = element.find_element_by_name ("selected[]").get_attribute("value")
+            grouplist.append(Group(name=text, id=id))
+        return grouplist
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
