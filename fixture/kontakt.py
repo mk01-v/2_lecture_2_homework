@@ -86,6 +86,7 @@ class KontaktHelper:
         # return groups page
         wd.find_element_by_link_text("home").click()
 
+    # подсчет количества контактов. Необходимость: проверка перед выполнением теста - создавать или нет предварительно контакт.
     def count_kontakt(self):
         wd = self.app.wd
         wd.find_element_by_link_text("home").click()
