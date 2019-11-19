@@ -17,6 +17,7 @@ def test_modifgroup_header(app):
     new_groups = app.group.get_group_list()
     assert len(old_groups) == len(new_groups)
 
+# новая модификация теста. 4 занятие 9-10 лекция.
 def test_modifgroup_name2(app):
     old_groups = app.group.get_group_list()
     group = Group(name="New_group")
