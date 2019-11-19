@@ -22,19 +22,27 @@ class GroupHelper:
         # сбрасываем кэш, т.к. после операции является не валидным.
         self.group_cache = None
 
-    #def modify(self, group):
+    #def modify_first_group(self, new_group_data):
     #    wd = self.app.wd
     #    self.open_group_page()
     #    self.select_first_group()
+    #    # open modification page
     #    wd.find_element_by_name("edit").click()
-    #    self.fill_group_form(group)
+    #    self.fill_group_form(new_group_data)
+    #    # submit modification
     #    wd.find_element_by_name("update").click()
     #    self.return_to_group_page()
+    #    # сбрасываем кэш, т.к. после операции является не валидным.
+    #    self.group_cache = None
 
-    def modify_first_group(self, new_group_data):
+    #удаление будет выполняться также как и раньше.
+    def modify_first_group(self):
+        self.modify_group_by_index(0)
+
+    def modify_group_by_index(self, index, new_group_data):
         wd = self.app.wd
         self.open_group_page()
-        self.select_first_group()
+        self.select_group_by_index(index)
         # open modification page
         wd.find_element_by_name("edit").click()
         self.fill_group_form(new_group_data)
@@ -60,10 +68,28 @@ class GroupHelper:
         wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
 
+    #def delete_first_group(self):
+    #    wd = self.app.wd
+    #    self.open_group_page()
+    #    self.select_first_group()
+    #    wd.find_element_by_name("delete").click()
+    #    self.return_to_group_page()
+    #    # сбрасываем кэш, т.к. после операции является не валидным.
+    #    self.group_cache = None
+
+    def select_group_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
+
+
+    #удаление будет выполняться также как и раньше.
     def delete_first_group(self):
+        self.delete_group_by_index(0)
+
+    def delete_group_by_index(self, index):
         wd = self.app.wd
         self.open_group_page()
-        self.select_first_group()
+        self.select_group_by_index(index)
         wd.find_element_by_name("delete").click()
         self.return_to_group_page()
         # сбрасываем кэш, т.к. после операции является не валидным.
