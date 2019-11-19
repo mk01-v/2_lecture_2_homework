@@ -8,7 +8,7 @@ class Group:
         self.header = header
         self.id = id
 
-    #вывод содержимое объектов, а не адресов памяти.
+    #вывод содержимое объектов, а не адресов памяти. Строковое представление в консоли.
     def __repr__(self):
         return "%s:%s" % (self.id, self.name)
 
