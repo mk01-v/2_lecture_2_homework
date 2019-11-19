@@ -1,4 +1,5 @@
 from selenium.webdriver.support.ui import Select
+from model.kontakt import kontakt
 
 class KontaktHelper:
 
@@ -19,6 +20,7 @@ class KontaktHelper:
         wd.find_element_by_xpath(
             "(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]").click()
         self.return_to_main_home()
+        self.kontakt_cache = None
 
     def fill_kontakt_form(self, kontakt):
         wd = self.app.wd
@@ -71,17 +73,26 @@ class KontaktHelper:
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
         self.fill_kontakt_form(kontakt)
         wd.find_element_by_name("update").click()
+        self.kontakt_cache = None
 
-    def delete_kontakt(self):
+    def select_kontakt_by_index(self, index):
         wd = self.app.wd
         wd.find_element_by_link_text("home").click()
-        # select first group
-        wd.find_element_by_name("selected[]").click()
+        wd.find_elements_by_name("selected[]")[index].click()
+
+    def delete_kontakt(self):
+        self.delete_kontakt_by_index(0)
+
+    def delete_kontakt_by_index(self, index):
+        wd = self.app.wd
+        wd.find_element_by_link_text("home").click()
+        self.select_kontakt_by_index(index)
         # submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         # закрытие диалогового окна подтверждением.
         wd.switch_to_alert().accept()
         self.return_to_main_home()
+        self.kontakt_cache = None
 
     def return_to_main_home(self):
         wd = self.app.wd
@@ -93,3 +104,23 @@ class KontaktHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("home").click()
         return len(wd.find_elements_by_name("selected[]"))
+
+    kontakt_cache = None
+
+    def get_kontakt_list(self):
+        # делаем проверку.
+        if self.kontakt_cache is None:
+            wd = self.app.wd
+            wd.find_element_by_link_text("home").click()
+            self.kontakt_cache = []
+            # Проверка по наименованию групп.
+            # Проверить можно в браузере что выберется. Ввести в консоли f12 $$('span.group').
+            for element in wd.find_elements_by_css_selector('tr[name="entry"]'):
+                # get_text() - вызывает метод, а нужно обращаться к свойству текст: text.
+                text = element.text
+                id = element.find_element_by_name("selected[]").get_attribute("value")
+                self.kontakt_cache.append(kontakt(last_name=text, id=id))
+            # возращаем копию кэша.
+            return list(self.kontakt_cache)
+
+        #$$('tr[name="entry"]')
