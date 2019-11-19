@@ -19,6 +19,8 @@ class GroupHelper:
         self.fill_group_form(group)
         wd.find_element_by_name("submit").click()
         self.return_to_group_page()
+        # сбрасываем кэш, т.к. после операции является не валидным.
+        self.group_cache = None
 
     #def modify(self, group):
     #    wd = self.app.wd
@@ -39,6 +41,8 @@ class GroupHelper:
         # submit modification
         wd.find_element_by_name("update").click()
         self.return_to_group_page()
+        # сбрасываем кэш, т.к. после операции является не валидным.
+        self.group_cache = None
 
     def fill_group_form(self, group):
         wd = self.app.wd
@@ -62,6 +66,8 @@ class GroupHelper:
         self.select_first_group()
         wd.find_element_by_name("delete").click()
         self.return_to_group_page()
+        # сбрасываем кэш, т.к. после операции является не валидным.
+        self.group_cache = None
 
     def return_to_group_page(self):
         wd = self.app.wd
@@ -72,18 +78,24 @@ class GroupHelper:
         self.open_group_page()
         return len(wd.find_elements_by_name("selected[]"))
 
+    # заводим переменную для кэша.
+    group_cache = None
+
     def get_group_list(self):
-        wd = self.app.wd
-        self.open_group_page()
-        grouplist = []
-        #Проверка по наименованию групп.
-        #Проверить можно в браузере что выберется. Ввести в консоли f12 $$('span.group').
-        for element in wd.find_elements_by_css_selector("span.group"):
-            #get_text() - вызывает метод, а нужно обращаться к свойству текст: text.
-            text = element.text
-            id = element.find_element_by_name ("selected[]").get_attribute("value")
-            grouplist.append(Group(name=text, id=id))
-        return grouplist
+        # делаем проверку.
+        if self.group_cache is None:
+            wd = self.app.wd
+            self.open_group_page()
+            self.group_cache = []
+            # Проверка по наименованию групп.
+            # Проверить можно в браузере что выберется. Ввести в консоли f12 $$('span.group').
+            for element in wd.find_elements_by_css_selector("span.group"):
+                # get_text() - вызывает метод, а нужно обращаться к свойству текст: text.
+                text = element.text
+                id = element.find_element_by_name("selected[]").get_attribute("value")
+                self.group_cache.append(Group(name=text, id=id))
+            # возращаем копию кэша.
+            return list(self.group_cache)
 
 
 
