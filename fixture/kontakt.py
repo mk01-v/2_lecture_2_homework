@@ -66,10 +66,23 @@ class KontaktHelper:
             wd.find_element_by_name(field_name).clear()
             wd.find_element_by_name(field_name).send_keys(text)
 
-    def modif_kontakt(self, kontakt):
+    #def modif_kontakt(self, kontakt):
+    #    wd = self.app.wd
+    #    wd.find_element_by_link_text("home").click()
+    #    wd.find_element_by_name("selected[]").click()
+    #    wd.find_element_by_xpath("//img[@alt='Edit']").click()
+    #    self.fill_kontakt_form(kontakt)
+    #    wd.find_element_by_name("update").click()
+    #    self.kontakt_cache = None
+
+    def modif_kontakt(self):
+        #wd = self.app.wd
+        self.modif_kontakt_by_index(0)
+
+    def modif_kontakt_by_index(self, index, kontakt):
         wd = self.app.wd
         wd.find_element_by_link_text("home").click()
-        wd.find_element_by_name("selected[]").click()
+        self.select_kontakt_by_index(index)
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
         self.fill_kontakt_form(kontakt)
         wd.find_element_by_name("update").click()
