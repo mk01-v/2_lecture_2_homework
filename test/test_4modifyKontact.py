@@ -1,4 +1,5 @@
 from model.kontakt import kontakt
+from random import randrange
 
 def test_modif_kontakt(app):
     if app.kontakt.count_kontakt() == 0:
@@ -94,3 +95,44 @@ def test_modif_kontakt2(app):
                                       aday="1",
                                       amonth="October",
                                       ayear="2000"))
+
+def test_modif_kontakt_list(app):
+    if app.kontakt.count_kontakt() == 0:
+        app.kontakt.create_kontakt(kontakt(#username="11111",
+                                           #middle_name="11111",
+                                           last_name="11111"
+                                           #nickname="11111",
+                                           #title="11111",
+                                           #company="11111",
+                                           #address="11111",
+                                           #home="11111",
+                                           #mobile="11111",
+                                           #work="11111",
+                                           #fax="11111",
+                                           #email="11111",
+                                           #email2="11111",
+                                           #email3="11111",
+                                           #homepage="11111",
+
+                                           #bday="28",
+                                           #bmonth="July",
+                                           #byear="1992",
+
+                                           #aday="1",
+                                           #amonth="January",
+                                           #ayear="2000",
+
+                                           #secondary_address2="11111",
+                                           #secondary_home2="11111",
+                                           #secondary_notes="11111"
+                                            ))
+    old_kontakts = app.kontakt.get_kontakt_list()
+    index = randrange(len(old_kontakts))
+    Kontakt = kontakt(last_name="qqqq")
+    Kontakt.id = old_kontakts[index].id
+    app.kontakt.modif_kontakt_by_index(index, Kontakt)
+    new_kontakts = app.kontakt.get_kontakt_list()
+    assert len(old_kontakts) == len(new_kontakts)
+    old_kontakts[index] = Kontakt
+    assert sorted(old_kontakts, key=kontakt.id_or_max_kontakt) == sorted(new_kontakts, key=kontakt.id_or_max_kontakt)
+
