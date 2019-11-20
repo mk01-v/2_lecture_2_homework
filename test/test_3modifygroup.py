@@ -19,7 +19,7 @@ from random import randrange
 #    assert len(old_groups) == len(new_groups)
 
 # новая модификация теста. 4 занятие 9-10 лекция.
-def test_modifgroup_name2(app):
+def test_modifgroup_name_list(app):
     if app.group.count() == 0:
         app.group.create(Group(name="ЙЙЙ", header="ЙЙЙ"))
     old_groups = app.group.get_group_list()
