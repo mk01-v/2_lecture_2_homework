@@ -23,8 +23,7 @@ import string
 # не работает склейка в 1 строку.
 x = []
 for i in range(5):
-    x[i] = x[i] + i
-#''.join(random.choice(string.ascii_letters + string.digits))
+    x[i] = x[i] + ''.join(random.choice(string.ascii_letters + string.digits))
 print(x)
 
 
