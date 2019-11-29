@@ -25,7 +25,10 @@ x = []
 for i in range(5):
     x[i] = x[i] + ''.join(random.choice(string.ascii_letters + string.digits))
 print(x)
-
+# как реализовано в командной строке, генерация 20 случайных символов
+# [random.choice(string.ascii_letters + string.digits) for i in range(20)]
+# ''.join([random.choice(string.ascii_letters + string.digits) for i in range(20)])
+# ''.join([random.choice(string.ascii_letters + string.digits) for i in range(random.randrange(20))])
 
 
 
