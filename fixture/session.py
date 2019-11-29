@@ -31,7 +31,12 @@ class SessionHelper:
 
     def is_logged_in_as(self, username):
         wd = self.app.wd
-        return wd.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='Address Book'])[1]/preceding::b[1]").text == "("+username+")"
+        return self.get_logged_user() == username
+
+    def get_logged_user(self):
+        wd = self.app.wd
+        # вырезка для логина. Обрезаем 1 символ и предпоследний - скобки.
+        return wd.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='Address Book'])[1]/preceding::b[1]").text[1:-1]
 
     def ensure_logout(self):
         wd = self.app.wd
