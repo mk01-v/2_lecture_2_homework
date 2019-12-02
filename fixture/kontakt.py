@@ -196,6 +196,7 @@ class KontaktHelper:
         wd = self.app.wd
         self.open_kontakt_view_by_index(index)
         text = wd.find_element_by_id("content").text
+        # прозвольные символы до конца строки - .*
         home = re.search("H: (.*)", text).group(1)
         mobile = re.search("M: (.*)", text).group(1)
         work = re.search("W: (.*)", text).group(1)
