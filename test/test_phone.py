@@ -1,5 +1,8 @@
 import re
 
+
+# тесты упадут, если не будут присутствовать данные в полях.
+
 def test_phones_on_home_page(app):
     kontakt_from_home_page = app.kontakt.get_kontakt_list()[0]
     kontakt_from_edit_page = app.kontakt.get_kontakt_info_from_edit_page(0)
