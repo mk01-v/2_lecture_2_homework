@@ -140,14 +140,35 @@ class KontaktHelper:
                 username = cells[1].text
                 lastname = cells[2].text
                 id = cells[0].find_element_by_tag_name("input").get_attribute("value")
-                all_phones = cells[5].text.splitlines()
+                all_phones = cells[5].text
                 self.kontakt_cache.append(kontakt(username=username,last_name=lastname, id=id,
-                                                  home=all_phones[0],
-                                                  mobile=all_phones[1],
-                                                  work=all_phones[2],
-                                                  secondary_home2=all_phones[3]))
+                                                  all_phones_from_home_page=all_phones))
         return list(self.kontakt_cache)
 
+        # прошлая версия - вычленяет только 2 элемента фамилию и имя.
+        #def get_kontakt_list(self):
+        #    # делаем проверку.
+        #    if self.kontakt_cache is None:
+        #        wd = self.app.wd
+        #        self.open_home_kontakt_page()
+        #        self.kontakt_cache = []
+        #        # Проверка по наименованию групп.
+        #        # Проверить можно в браузере что выберется. Ввести в консоли f12 $$('span.group').
+        #        for row in wd.find_elements_by_name("entry"):
+        #            cells = row.find_elements_by_tag_name("td")
+        #            username = cells[1].text
+        #            lastname = cells[2].text
+        #            id = cells[0].find_element_by_tag_name("input").get_attribute("value")
+        #            all_phones = cells[5].text.splitlines()
+        #            self.kontakt_cache.append(kontakt(username=username, last_name=lastname, id=id,
+        #                                              home=all_phones[0],
+        #                                              mobile=all_phones[1],
+        #                                              work=all_phones[2],
+        #                                              secondary_home2=all_phones[3]))
+        #    return list(self.kontakt_cache)
+
+
+            # прошлая версия. Вычленяет 1 элемент - то есть всю строку.
             #for element in wd.find_elements_by_css_selector('tr[name="entry"]'):
             #    # get_text() - вызывает метод, а нужно обращаться к свойству текст: text.
             #    text = element.text
