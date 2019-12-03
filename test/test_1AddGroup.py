@@ -1,21 +1,65 @@
 from model.group import Group
+import pytest
+import random
+import string
 
 
-def test_add_group(app):
+# генератор данных.
+def random_string(prefix, maxlen):
+    symbols = string.ascii_letters + string.digits + " "*10
+    return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
+
+#Вводимые данные
+testdata = [Group(name="", header="")] + [
+    Group(name=random_string("name", 10), header=random_string("header", 20))
+    for i in range(5)
+]
+
+# Или другой генератор данных. (пустой name, пустой header;
+#                               пустой name, заполненный header
+#                               заполненный name, пустой header;
+#                               заполненный name, заполненный header
+# на видео оставили 1 вариант
+#testdata = [
+#    Group(name=name, header=header)
+#    for name in ["", random_string("name", 10)]
+#    for header in ["", random_string("header", 20)]
+#]
+
+@pytest.mark.parametrize("group", testdata, ids=[repr(x) for x in testdata])
+def test_add_group(app, group):
+    #pass
+    # добавляем тестовые данные
+    # добаляем цикл данных
     #объявляем старый список групп.
     old_groups = app.group.get_group_list()
-    group = Group(name="group_name_cool", header="group_header_cool_logo")
+    # теперь строка загрузки данных не нужна.
+    #group = Group(name="group_name_cool", header="group_header_cool_logo")
     app.group.create(group)
-
     #Проверки со слова assert. Условие выполнилось, т.к. создалась 1 группа. Сравниваем длину 2-х списков.
     assert len(old_groups) + 1 == app.group.count()
     new_groups = app.group.get_group_list()
     old_groups.append(group)
-
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
-
     # Проверка что остаемся в сессии.
-    app.session.logout()
+    #app.session.logout()
+
+
+#def test_add_group(app):
+#    #объявляем старый список групп.
+#    old_groups = app.group.get_group_list()
+#    group = Group(name="group_name_cool", header="group_header_cool_logo")
+#    app.group.create(group)
+#
+#    #Проверки со слова assert. Условие выполнилось, т.к. создалась 1 группа. Сравниваем длину 2-х списков.
+#    assert len(old_groups) + 1 == app.group.count()
+#    new_groups = app.group.get_group_list()
+#    old_groups.append(group)
+#
+#    assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
+#
+#    # Проверка что остаемся в сессии.
+#    app.session.logout()
 
 #def test_add_empty_group(app):
 #    old_groups = app.group.get_group_list()
