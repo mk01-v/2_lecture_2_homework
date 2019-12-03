@@ -10,7 +10,9 @@ def test_phones_on_home_page(app):
 # применяем filter чтобы убрать строки, которые не учавствуют.
 def merge_phones_like_on_home_page(kontakt):
     return "\n".join(filter(lambda x: x != "",
-                            map(lambda x: clear(x), [kontakt.home,kontakt.work,kontakt.mobile,kontakt.secondary_home2])))
+                            map(lambda x: clear(x),
+                                filter(lambda x: x is not None,
+                                       [kontakt.home,kontakt.work,kontakt.mobile,kontakt.secondary_home2]))))
 
 
 
