@@ -12,7 +12,7 @@ def merge_phones_like_on_home_page(kontakt):
     return "\n".join(filter(lambda x: x != "",
                             map(lambda x: clear(x),
                                 filter(lambda x: x is not None,
-                                       [kontakt.home,kontakt.work,kontakt.mobile,kontakt.secondary_home2]))))
+                                       [kontakt.home,kontakt.mobile,kontakt.work,kontakt.secondary_home2]))))
 
 
 
