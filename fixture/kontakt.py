@@ -137,11 +137,17 @@ class KontaktHelper:
             # Проверить можно в браузере что выберется. Ввести в консоли f12 $$('span.group').
             for row in wd.find_elements_by_name("entry"):
                 cells = row.find_elements_by_tag_name("td")
-                username = cells[1].text
-                lastname = cells[2].text
+                username = cells[2].text
+                lastname = cells[1].text
+                address = cells[3].text
+                all_email = cells[4].text
                 id = cells[0].find_element_by_tag_name("input").get_attribute("value")
                 all_phones = cells[5].text
-                self.kontakt_cache.append(kontakt(username=username,last_name=lastname, id=id,
+                self.kontakt_cache.append(kontakt(username=username,
+                                                  last_name=lastname,
+                                                  address=address,
+                                                  all_email_from_home_page=all_email,
+                                                  id=id,
                                                   all_phones_from_home_page=all_phones))
         return list(self.kontakt_cache)
 
@@ -199,6 +205,10 @@ class KontaktHelper:
 
         username = wd.find_element_by_name("firstname").get_attribute("value")
         lastname = wd.find_element_by_name("lastname").get_attribute("value")
+        address = wd.find_element_by_name("address").get_attribute("value")
+        email = wd.find_element_by_name("email").get_attribute("value")
+        email2 = wd.find_element_by_name("email2").get_attribute("value")
+        email3 = wd.find_element_by_name("email3").get_attribute("value")
         id = wd.find_element_by_name("id").get_attribute("value")
         home = wd.find_element_by_name("home").get_attribute("value")
         mobile = wd.find_element_by_name("mobile").get_attribute("value")
@@ -207,6 +217,10 @@ class KontaktHelper:
 
         return kontakt(username=username,
                        last_name=lastname,
+                       address=address,
+                       email=email,
+                       email2=email2,
+                       email3=email3,
                        id=id,
                        home=home,
                        mobile=mobile,
