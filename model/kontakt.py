@@ -5,7 +5,9 @@ class kontakt:
 
     def __init__(self, username=None, middle_name=None, last_name=None, nickname=None, title=None, company=None, address=None, home=None,
                  mobile=None, work=None, fax=None, email=None, email2=None, email3=None, homepage=None, bday=None, bmonth=None, byear=None, aday=None,
-                 amonth=None, ayear=None, secondary_address2=None, secondary_home2=None, secondary_notes=None, id=None, all_phones_from_home_page=None):
+                 amonth=None, ayear=None, secondary_address2=None, secondary_home2=None, secondary_notes=None, id=None,
+                 all_phones_from_home_page=None,
+                 all_email_from_home_page=None):
         self.username = username
         self.middle_name = middle_name
         self.last_name = last_name
@@ -32,6 +34,7 @@ class kontakt:
         self.secondary_notes = secondary_notes
         self.id = id
         self.all_phones_from_home_page = all_phones_from_home_page
+        self.all_email_from_home_page = all_email_from_home_page
 
     #вывод содержимое объектов, а не адресов памяти. Строковое представление в консоли.
     def __repr__(self):
