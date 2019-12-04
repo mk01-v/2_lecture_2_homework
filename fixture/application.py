@@ -4,9 +4,19 @@ from fixture.group import GroupHelper
 from fixture.kontakt import KontaktHelper
 
 
-class Application():
-    def __init__(self):
-        self.wd = webdriver.Firefox()
+class Application:
+    def __init__(self, browser="Firefox"):
+        if browser == "Firefox":
+            self.wd = webdriver.Firefox()
+        elif browser == "Chrome":
+            self.wd = webdriver.Chrome()
+        elif browser == "Opera":
+            self.wd = webdriver.Opera()
+        elif browser == "Ie":
+            self.wd = webdriver.Ie()
+        else:
+            # если ничего не нашли. Raise - аварийное прерывание конструкции.
+            raise ValueError("Unrecognized browser %s" % browser)
         #период ожидания драйвером дождаться элементов
         #для динамических элменетов, если данные присутствуют на странице сразу - можно убрать.
         self.wd.implicitly_wait(7)
