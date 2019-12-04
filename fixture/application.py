@@ -9,7 +9,7 @@ class Application:
         if browser == "Firefox":
             self.wd = webdriver.Firefox()
         elif browser == "Chrome":
-            self.wd = webdriver.Chrome()
+            self.wd = webdriver.Chrome('C:\Python\Projects\2_lecture_2_homework\env\Lib\site-packages\selenium\webdriver\chrome\webdriver.exe')
         elif browser == "Opera":
             self.wd = webdriver.Opera()
         elif browser == "Ie":
