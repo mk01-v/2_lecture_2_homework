@@ -1,9 +1,9 @@
-from model.kontakt import kontakt
+from model.kontakt import Kontakt
 from random import randrange
 
 def test_modif_kontakt(app):
     if app.kontakt.count_kontakt() == 0:
-        app.kontakt.create_kontakt(kontakt(username="11111",
+        app.kontakt.create_kontakt(Kontakt(username="11111",
                                            middle_name="11111",
                                            last_name="11111",
                                            nickname="11111",
@@ -30,7 +30,7 @@ def test_modif_kontakt(app):
                                            secondary_address2="11111",
                                            secondary_home2="11111",
                                            secondary_notes="11111"))
-    app.kontakt.modif_kontakt(kontakt(username="Artur123123",
+    app.kontakt.modif_kontakt(Kontakt(username="Artur123123",
                                       middle_name="Middle_name: 1230000",
                                       last_name="000",
                                       nickname="000",
@@ -60,7 +60,7 @@ def test_modif_kontakt(app):
 
 def test_modif_kontakt2(app):
     if app.kontakt.count_kontakt() == 0:
-        app.kontakt.create_kontakt(kontakt(username="11111",
+        app.kontakt.create_kontakt(Kontakt(username="11111",
                                            middle_name="11111",
                                            last_name="11111",
                                            nickname="11111",
@@ -87,7 +87,7 @@ def test_modif_kontakt2(app):
                                            secondary_address2="11111",
                                            secondary_home2="11111",
                                            secondary_notes="11111"))
-    app.kontakt.modif_kontakt(kontakt(username="66666",
+    app.kontakt.modif_kontakt(Kontakt(username="66666",
                                       bday="10",
                                       bmonth="July",
                                       byear="1992",
@@ -96,9 +96,10 @@ def test_modif_kontakt2(app):
                                       amonth="October",
                                       ayear="2000"))
 
+# работает только при одном параметре
 def test_modif_kontakt_list(app):
     if app.kontakt.count_kontakt() == 0:
-        app.kontakt.create_kontakt(kontakt(#username="11111",
+        app.kontakt.create_kontakt(Kontakt(#username="11111",
                                            #middle_name="11111",
                                            last_name="11111"
                                            #nickname="11111",
@@ -128,11 +129,11 @@ def test_modif_kontakt_list(app):
                                             ))
     old_kontakts = app.kontakt.get_kontakt_list()
     index = randrange(len(old_kontakts))
-    Kontakt = kontakt(last_name="qqqq")
-    Kontakt.id = old_kontakts[index].id
-    app.kontakt.modif_kontakt_by_index(index, Kontakt)
+    Kontakt_peremen = Kontakt(last_name="qqqq")
+    Kontakt_peremen.id = old_kontakts[index].id
+    app.kontakt.modif_kontakt_by_index(index, Kontakt_peremen)
     new_kontakts = app.kontakt.get_kontakt_list()
     assert len(old_kontakts) == len(new_kontakts)
-    old_kontakts[index] = Kontakt
-    assert sorted(old_kontakts, key=kontakt.id_or_max_kontakt) == sorted(new_kontakts, key=kontakt.id_or_max_kontakt)
+    old_kontakts[index] = Kontakt_peremen
+    assert sorted(old_kontakts, key=Kontakt.id_or_max_kontakt) == sorted(new_kontakts, key=Kontakt.id_or_max_kontakt)
 
