@@ -1,7 +1,7 @@
 from sys import maxsize
 
 
-class kontakt:
+class Kontakt:
 
     def __init__(self, username=None, middle_name=None, last_name=None, nickname=None, title=None, company=None, address=None, home=None,
                  mobile=None, work=None, fax=None, email=None, email2=None, email3=None, homepage=None, bday=None, bmonth=None, byear=None, aday=None,
@@ -38,7 +38,7 @@ class kontakt:
 
     #вывод содержимое объектов, а не адресов памяти. Строковое представление в консоли.
     def __repr__(self):
-        return "%s:%s" % (self.id, self.last_name)
+        return "%s:%s:%s:%s" % (self.id, self.last_name, self.username, self.address)
 
     # чтобы не сравнивал по физическому расположению, а сравнивал логически - индификаторы и имена.
     # необходимо для сравнения самих объектов.
