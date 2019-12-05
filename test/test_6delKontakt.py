@@ -1,9 +1,9 @@
-from model.kontakt import kontakt
+from model.kontakt import Kontakt
 from random import randrange
 
 def test_delete_kontakt(app):
     if app.kontakt.count_kontakt() == 0:
-        app.kontakt.create_kontakt(kontakt(username="11",
+        app.kontakt.create_kontakt(Kontakt(username="11",
                                            middle_name="22",
                                            last_name="33",
                                            nickname="44",
@@ -34,7 +34,7 @@ def test_delete_kontakt(app):
 
 def test_delete_kontakt_list(app):
     if app.kontakt.count_kontakt() == 0:
-        app.kontakt.create_kontakt(kontakt(#username="11",
+        app.kontakt.create_kontakt(Kontakt(#username="11",
                                            #middle_name="22",
                                            last_name="33"
                                            #nickname="44",
