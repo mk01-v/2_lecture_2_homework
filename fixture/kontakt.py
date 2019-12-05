@@ -1,5 +1,5 @@
 from selenium.webdriver.support.ui import Select
-from model.kontakt import kontakt
+from model.kontakt import Kontakt
 # импорт регулярных выражений
 import re
 
@@ -143,7 +143,7 @@ class KontaktHelper:
                 all_email = cells[4].text
                 id = cells[0].find_element_by_tag_name("input").get_attribute("value")
                 all_phones = cells[5].text
-                self.kontakt_cache.append(kontakt(username=username,
+                self.kontakt_cache.append(Kontakt(username=username,
                                                   last_name=lastname,
                                                   address=address,
                                                   all_email_from_home_page=all_email,
@@ -215,7 +215,7 @@ class KontaktHelper:
         work = wd.find_element_by_name("work").get_attribute("value")
         secondary_home2 = wd.find_element_by_name("phone2").get_attribute("value")
 
-        return kontakt(username=username,
+        return Kontakt(username=username,
                        last_name=lastname,
                        address=address,
                        email=email,
@@ -237,7 +237,7 @@ class KontaktHelper:
         work = re.search("W: (.*)", text).group(1)
         secondary_home2 = re.search("P: (.*)", text).group(1)
 
-        return kontakt(home=home,
+        return Kontakt(home=home,
                        mobile=mobile,
                        work=work,
                        secondary_home2=secondary_home2)
