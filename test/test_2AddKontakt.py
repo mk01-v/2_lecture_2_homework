@@ -85,17 +85,16 @@ def random_telephone(maxlen):
 
 def random_day():
     #numeral = random.randint(1, 28)
-    return (random.randint(1,30))
+    return str(random.randint(1,30))
 
 def random_month():
     #numeral = random.randint(1, 28)
-    return (random.choice(['January','February','March','April', 'May', 'June', 'July',
+    return str(random.choice(['January','February','March','April', 'May', 'June', 'July',
                             'August', 'September', 'October', 'November', 'December']))
 
 def random_year():
     #numeral = random.randint(1, 28)
-    return (random.choice(['January','February','March','April', 'May', 'June', 'July',
-                            'August', 'September', 'October', 'November', 'December']))
+    return str(random.choice([1900, 2019]))
 
 
 #Вводимые данные
@@ -115,13 +114,13 @@ testdata = [Kontakt(username="",
                     email3="",
                     homepage="",
 
-                    #bday="",
-                    #bmonth="",
-                    #byear="",
+                    bday="-",
+                    bmonth="-",
+                    byear="-",
 
-                    #aday="",
-                    #amonth="",
-                    #ayear="",
+                    aday="-",
+                    amonth="-",
+                    ayear="-",
 
                     secondary_address2="",
                     secondary_home2="",
@@ -143,13 +142,13 @@ testdata = [Kontakt(username="",
             email3=random_string("email3", 10),
             homepage=random_string("homepage", 10),
 
-            #bday=random_day(),
-            #bmonth=random_month(),
-            #byear=random_year(),
+            bday=random_day(),
+            bmonth=random_month(),
+            byear=random_year(),
 
-            #aday=random_day(),
-            #amonth=random_month(),
-            #ayear=random_year(),
+            aday=random_day(),
+            amonth=random_month(),
+            ayear=random_year(),
 
             secondary_address2=random_string("address2", 10),
             secondary_home2=random_telephone(10),
