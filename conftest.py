@@ -1,6 +1,7 @@
 from fixture.application import Application
 import pytest
 import json
+import os.path
 
 
 #Для быстрого запуска - в рамках одной сессии.
@@ -28,9 +29,12 @@ def app(request):
     browser = request.config.getoption("--browser")
     # не забыть указать корень директории проекта, иначе не будет работать target.json
     # *запуск проектов* - edit configuration - working directory.
+    # C:\Python\Projects\2_lecture_2_homework
     if target is None:
-        with open(request.config.getoption("--target")) as config_file:
-            target = json.load(config_file)
+        # прописывание директории по-умолчанию, т.к. не цеплялся файл json к проекту.
+        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), request.config.getoption("--target"))
+        with open(config_file) as f:
+            target = json.load(f)
     if fixture is None or not fixture.is_valid:
         fixture = Application(browser=browser, base_Url=target['baseUrl'])
     fixture.session.ensure_login(username=target["username"], password=target["password"])
