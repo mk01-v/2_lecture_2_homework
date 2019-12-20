@@ -1,9 +1,12 @@
 from model.group import Group
-import pytest
-#from data.add_group import testdata
+
+
+
+#import pytest
+##from data.add_group import testdata
 
 # если мы не хотим импользовать генератор, а быстро проверить какие-то теории.
-from data.add_group import constant as testdata
+from data.groups import constant as testdata
 
 
 # Или другой генератор данных. (пустой name, пустой header;
@@ -17,8 +20,9 @@ from data.add_group import constant as testdata
 #    for header in ["", random_string("header", 20)]
 #]
 
-@pytest.mark.parametrize("group", testdata, ids=[repr(x) for x in testdata])
-def test_add_group(app, group):
+#@pytest.mark.parametrize("group", testdata, ids=[repr(x) for x in testdata])
+def test_add_group(app, data_groups):
+    group = data_groups
     #pass
     # добавляем тестовые данные
     # добаляем цикл данных
