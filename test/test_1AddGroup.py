@@ -21,8 +21,8 @@ from model.group import Group
 #]
 
 #@pytest.mark.parametrize("group", testdata, ids=[repr(x) for x in testdata])
-def test_add_group(app, data_groups):
-    group = data_groups
+def test_add_group(app, json_groups):
+    group = json_groups
     #pass
     # добавляем тестовые данные
     # добаляем цикл данных
