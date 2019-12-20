@@ -6,7 +6,7 @@ from model.group import Group
 ##from data.add_group import testdata
 
 # если мы не хотим импользовать генератор, а быстро проверить какие-то теории.
-from data.groups import constant as testdata
+#from data.groups import constant as testdata
 
 
 # Или другой генератор данных. (пустой name, пустой header;
