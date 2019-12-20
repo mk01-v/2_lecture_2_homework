@@ -1,19 +1,10 @@
 from model.group import Group
 import pytest
-import random
-import string
+#from data.add_group import testdata
 
+# если мы не хотим импользовать генератор, а быстро проверить какие-то теории.
+from data.add_group import constant as testdata
 
-# генератор данных.
-def random_string(prefix, maxlen):
-    symbols = string.ascii_letters + string.digits # + " "*10
-    return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
-
-#Вводимые данные
-testdata = [Group(name="", header="")] + [
-    Group(name=random_string("name", 10), header=random_string("header", 20))
-    for i in range(5)
-]
 
 # Или другой генератор данных. (пустой name, пустой header;
 #                               пустой name, заполненный header
