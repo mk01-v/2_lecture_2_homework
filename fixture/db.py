@@ -14,18 +14,18 @@ class DbFixture:
                                                   password=password)
 
     # получение списка из БД.
-    def get_group_list(self):
+    def get_group_list_db(self):
         list = []
         cursor = self.connection.cursor()
         try:
-            cursor.execute("select group_id, group_name, group_header, from 'group_list'")
+            cursor.execute("select group_id, group_name, group_header from group_list")
             for row in cursor:
-                (id, name, header) = row # в каком порядке выстроить параметры.
+                # в каком порядке выстроить параметры.
+                (id, name, header) = row
                 list.append(Group(id=str(id), name=name, header=header))
         finally:
             cursor.close()
         return list
-
 
     def destroy(self):
         self.connection.close()
