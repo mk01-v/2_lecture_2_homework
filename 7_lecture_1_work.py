@@ -1,9 +1,18 @@
 # Проверка подключения БД
-import mysql.connector
+# для коннектора 8.0.18
+#import mysql.connector
 
-connection = mysql.connector.connect(host="127.0.0.1", database="addressbook", user="root", password="")
+# для pymysql лучше использовать этот отмечает Баранцев.
+import pymysql.cursors
+
+connection = pymysql.connect(host="127.0.0.1", database="addressbook", user="root", password="")
+# с коннектором 8.0.18 mysql.connector.connect(host="127.0.0.1", database="addressbook", user="root", password="")
 
 try:
-    pass
+    # необходим курсор для указания данных.
+    cursor = connection.cursor()
+    cursor.execute("select * from group_list")
+    for row in cursor.fetchall():
+        print(row)
 finally:
     connection.close()
