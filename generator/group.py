@@ -11,7 +11,8 @@ import sys
 
 # параметризованный генератор.
 # Пример из официальной документации как читать опции из командной строки.
-#
+# преобразование в комфортный вид.
+# "n:f:" - кол-во генерации, в какой файл.
 try:
     opts, args = getopt.getopt(sys.argv[1:], "n:f:", ["number of groups", "file"])
 except getopt.GetoptError as err:
@@ -43,10 +44,13 @@ testdata = [Group(name="", header="")] + [
 ]
 
 # вывод данных в файл json "groups.json".
+# ".." переход на 2 уровня выше
 file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", f)
 with open(file, "w") as out:
-    # записывает данные в файл тестовых данны, импорт нужен json, _dict_ дефолт настройки для преобразования данных и
+    # записывает данные в файл тестовых данных, импорт нужен json, _dict_ дефолт настройки для преобразования данных и
     # .. и превращаем в словарь. Indent для вывода строк в столбец
     #out.write(json.dumps(testdata, default=lambda x: x.__dict__, indent=2))
+    # jsonpickle - была проблема восстановить обратно объект по этим данным и заполнятся нужными свойствами. Расширение json.
+    # преобразовывать произвольные объекты в формат json и обратно.
     jsonpickle.set_encoder_options("json", indent=2)
     out.write(jsonpickle.encode(testdata))
