@@ -25,6 +25,7 @@ from fixture.db import DbFixture
 fixture = None
 target = None
 
+# отдельная функция по запуску БД.
 def load_config(file):
     global target
     # не забыть указать корень директории проекта, иначе не будет работать target.json
@@ -39,7 +40,7 @@ def load_config(file):
             target = json.load(f)
     return target
 
-
+# запуск веба без БД.
 @pytest.fixture
 def app(request):
     global fixture
@@ -82,6 +83,7 @@ def load_from_json(file):
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data/%s.json" % file)) as f:
         return jsonpickle.decode(f.read())
 
+# фикстура для БД, запуск из файла.
 @pytest.fixture(scope="session")
 def db(request):
     db_config = load_config(request.config.getoption("--target"))['db']
