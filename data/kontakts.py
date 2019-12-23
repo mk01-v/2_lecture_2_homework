@@ -31,7 +31,7 @@ testdata = [Kontakt(username="",
     Kontakt(username="username1",
             middle_name="middle_name2",
             last_name="last_name3",
-            nickname="nickname4",
+            nickname="nickname4"
             #title=random_string("title", 10),
             #company=random_string("company", 10),
             #address=random_string("address", 10),
@@ -55,7 +55,7 @@ testdata = [Kontakt(username="",
             #secondary_address2=random_string("address2", 10),
             #secondary_home2=random_telephone(10),
             #secondary_notes=random_string("notes", 10))
-]
+            )]
 
 
 
