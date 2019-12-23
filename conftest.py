@@ -34,6 +34,8 @@ def app(request):
     # C:\Python\Projects\2_lecture_2_homework
     if target is None:
         # прописывание директории по-умолчанию, т.к. не цеплялся файл json к проекту.
+        # 1 - abspath преоброзование в абсолютный путь, 2 dirname получили директорию, 3 - к этой директории приклеиваем ..
+        # .. путь к конфигурационному файлу join. 4 - то что собираемся подклеить request.config.getoption("--target").
         config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), request.config.getoption("--target"))
         with open(config_file) as f:
             target = json.load(f)
@@ -56,11 +58,12 @@ def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="Firefox")
     parser.addoption("--target", action="store", default="target.json")
 
-#
+# в test_add_group проверяется наименование, в зависимости от выбранных условий подставляются данные.
 def pytest_generate_tests(metafunc):
     for fixture in metafunc.fixturenames:
         if fixture.startswith("data_"):
             testdata = load_from_module(fixture[5:])
+            # 1 - куда будут подставляться параметры, 2 - какие значения подставляем, 3 - строковое представление.
             metafunc.parametrize(fixture, testdata, ids=[str(x) for x in testdata])
         elif fixture.startswith("json_"):
             testdata = load_from_json(fixture[5:])
