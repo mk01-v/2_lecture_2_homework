@@ -1,0 +1,291 @@
+[
+  {
+    "py/object": "model.kontakt.Kontakt",
+    "aday": "-",
+    "address": "",
+    "all_email_from_home_page": null,
+    "all_phones_from_home_page": null,
+    "amonth": "-",
+    "ayear": "-",
+    "bday": "-",
+    "bmonth": "-",
+    "byear": "-",
+    "company": "",
+    "email": "",
+    "email2": "",
+    "email3": "",
+    "fax": "",
+    "home": "",
+    "homepage": "",
+    "id": null,
+    "last_name": "",
+    "middle_name": "",
+    "mobile": "",
+    "nickname": "",
+    "secondary_address2": "",
+    "secondary_home2": "",
+    "secondary_notes": "",
+    "title": "",
+    "username": "",
+    "work": ""
+  },
+  {
+    "py/object": "model.kontakt.Kontakt",
+    "aday": "22",
+    "address": "addressMtkmw9",
+    "all_email_from_home_page": null,
+    "all_phones_from_home_page": null,
+    "amonth": "February",
+    "ayear": "2019",
+    "bday": "28",
+    "bmonth": "September",
+    "byear": "2019",
+    "company": "companyQE3Mh",
+    "email": "emailg4c0",
+    "email2": "email2DD8Z6YCr",
+    "email3": "email30Nol0C4",
+    "fax": [
+      "7"
+    ],
+    "home": [],
+    "homepage": "homepagep7",
+    "id": null,
+    "last_name": "lastnameE55VV5l6",
+    "middle_name": "middlenameIUL",
+    "mobile": [
+      "5",
+      "9",
+      "9",
+      "1",
+      "0",
+      "7"
+    ],
+    "nickname": "nicknameRrWj",
+    "secondary_address2": "address2TKOyb7",
+    "secondary_home2": [
+      "9",
+      "3",
+      "3",
+      "8",
+      "7",
+      "2",
+      "4",
+      "9"
+    ],
+    "secondary_notes": "notesl",
+    "title": "title107D",
+    "username": "usernameWtxlXjMd",
+    "work": [
+      "5",
+      "9",
+      "9",
+      "5"
+    ]
+  },
+  {
+    "py/object": "model.kontakt.Kontakt",
+    "aday": "19",
+    "address": "addressD",
+    "all_email_from_home_page": null,
+    "all_phones_from_home_page": null,
+    "amonth": "July",
+    "ayear": "2019",
+    "bday": "12",
+    "bmonth": "December",
+    "byear": "2019",
+    "company": "companyUzJbJ7fD",
+    "email": "emailoJoUmA",
+    "email2": "email2Y12pVG",
+    "email3": "email38N",
+    "fax": [],
+    "home": [
+      "4",
+      "0",
+      "7",
+      "9",
+      "0",
+      "2",
+      "7",
+      "1"
+    ],
+    "homepage": "homepagevgZOv",
+    "id": null,
+    "last_name": "lastnameQkW9m",
+    "middle_name": "middlename7eDRvquXH",
+    "mobile": [
+      "4"
+    ],
+    "nickname": "nickname",
+    "secondary_address2": "address28Pr4AP1",
+    "secondary_home2": [
+      "8",
+      "8",
+      "3"
+    ],
+    "secondary_notes": "noteso",
+    "title": "title7G3K7Zbm",
+    "username": "username",
+    "work": [
+      "2",
+      "4",
+      "8"
+    ]
+  },
+  {
+    "py/object": "model.kontakt.Kontakt",
+    "aday": "29",
+    "address": "addressplgDmqHN",
+    "all_email_from_home_page": null,
+    "all_phones_from_home_page": null,
+    "amonth": "December",
+    "ayear": "1900",
+    "bday": "10",
+    "bmonth": "May",
+    "byear": "2019",
+    "company": "companyGNE",
+    "email": "email",
+    "email2": "email2",
+    "email3": "email3a0WIAMFC",
+    "fax": [
+      "5"
+    ],
+    "home": [
+      "3",
+      "2",
+      "2",
+      "0",
+      "9",
+      "3",
+      "5",
+      "6"
+    ],
+    "homepage": "homepagexfSeecAZ",
+    "id": null,
+    "last_name": "lastname2MLU",
+    "middle_name": "middlenameNAciCS",
+    "mobile": [
+      "2",
+      "5",
+      "8",
+      "5",
+      "6"
+    ],
+    "nickname": "nickname",
+    "secondary_address2": "address2",
+    "secondary_home2": [
+      "5",
+      "9",
+      "6",
+      "8"
+    ],
+    "secondary_notes": "notespHREW",
+    "title": "titleXkafgl5",
+    "username": "usernamejZf",
+    "work": [
+      "7",
+      "0",
+      "5",
+      "1",
+      "3",
+      "7"
+    ]
+  },
+  {
+    "py/object": "model.kontakt.Kontakt",
+    "aday": "4",
+    "address": "addressyDF2yZUsO",
+    "all_email_from_home_page": null,
+    "all_phones_from_home_page": null,
+    "amonth": "December",
+    "ayear": "1900",
+    "bday": "28",
+    "bmonth": "January",
+    "byear": "2019",
+    "company": "company",
+    "email": "emailW",
+    "email2": "email2VMezD5mQk",
+    "email3": "email3v",
+    "fax": [
+      "5"
+    ],
+    "home": [],
+    "homepage": "homepage75avwHLc",
+    "id": null,
+    "last_name": "lastnameLY",
+    "middle_name": "middlenameSzB91V",
+    "mobile": [
+      "1",
+      "3",
+      "6",
+      "1",
+      "2",
+      "1",
+      "8",
+      "1",
+      "2"
+    ],
+    "nickname": "nicknameSaKu",
+    "secondary_address2": "address266r0",
+    "secondary_home2": [
+      "9",
+      "2"
+    ],
+    "secondary_notes": "notesyZVS",
+    "title": "title6kY",
+    "username": "username",
+    "work": [
+      "2",
+      "7"
+    ]
+  },
+  {
+    "py/object": "model.kontakt.Kontakt",
+    "aday": "24",
+    "address": "addresseC2y5j",
+    "all_email_from_home_page": null,
+    "all_phones_from_home_page": null,
+    "amonth": "February",
+    "ayear": "1900",
+    "bday": "8",
+    "bmonth": "November",
+    "byear": "1900",
+    "company": "companyHgbbPOYL",
+    "email": "email5cg2QX",
+    "email2": "email2525Yg",
+    "email3": "email3wW",
+    "fax": [
+      "5",
+      "6",
+      "3"
+    ],
+    "home": [
+      "4",
+      "3",
+      "9",
+      "2"
+    ],
+    "homepage": "homepage",
+    "id": null,
+    "last_name": "lastnamecPgkGEg",
+    "middle_name": "middlenameN",
+    "mobile": [
+      "3"
+    ],
+    "nickname": "nicknamejv6Uz",
+    "secondary_address2": "address2Dl",
+    "secondary_home2": [],
+    "secondary_notes": "notesqG3Yiy",
+    "title": "titlecJGm",
+    "username": "usernameApO4zPt",
+    "work": [
+      "6",
+      "6",
+      "8",
+      "9",
+      "8",
+      "2",
+      "8",
+      "3"
+    ]
+  }
+]
