@@ -75,89 +75,91 @@ def test_add_kontakt_list(app):
 
 # Задание № 15 - генерация.
 # генератор данных.
-def random_string(prefix, maxlen):
-    symbols = string.ascii_letters + string.digits # + " "*10
-    return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
+#def random_string(prefix, maxlen):
+#    symbols = string.ascii_letters + string.digits # + " "*10
+#    return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
 
-def random_telephone(maxlen):
-    symbols = string.digits
-    return ([random.choice(symbols) for i in range(random.randrange(maxlen))])
+#def random_telephone(maxlen):
+#    symbols = string.digits
+#    return ([random.choice(symbols) for i in range(random.randrange(maxlen))])
 
-def random_day():
-    #numeral = random.randint(1, 28)
-    return str(random.randint(1,30))
+#def random_day():
+#    #numeral = random.randint(1, 28)
+#    return str(random.randint(1,30))
 
-def random_month():
-    #numeral = random.randint(1, 28)
-    return str(random.choice(['January','February','March','April', 'May', 'June', 'July',
-                            'August', 'September', 'October', 'November', 'December']))
+#def random_month():
+#    #numeral = random.randint(1, 28)
+#    return str(random.choice(['January','February','March','April', 'May', 'June', 'July',
+#                            'August', 'September', 'October', 'November', 'December']))
 
-def random_year():
-    #numeral = random.randint(1, 28)
-    return str(random.choice([1900, 2019]))
+#def random_year():
+#    #numeral = random.randint(1, 28)
+#    return str(random.choice([1900, 2019]))
 
 
-#Вводимые данные
-testdata = [Kontakt(username="",
-                    middle_name="",
-                    last_name="",
-                    nickname="",
-                    title="",
-                    company="",
-                    address="",
-                    home="",
-                    mobile="",
-                    work="",
-                    fax="",
-                    email="",
-                    email2="",
-                    email3="",
-                    homepage="",
+##Вводимые данные
+#testdata = [Kontakt(username="",
+#                    middle_name="",
+#                    last_name="",
+#                    nickname="",
+#                    title="",
+#                    company="",
+#                    address="",
+#                    home="",
+#                    mobile="",
+#                    work="",
+#                    fax="",
+#                    email="",
+#                    email2="",
+#                    email3="",
+#                    homepage="",
 
-                    bday="-",
-                    bmonth="-",
-                    byear="-",
+#                    bday="-",
+#                    bmonth="-",
+#                    byear="-",
 
-                    aday="-",
-                    amonth="-",
-                    ayear="-",
+#                    aday="-",
+#                    amonth="-",
+#                    ayear="-",
 
-                    secondary_address2="",
-                    secondary_home2="",
-                    secondary_notes=""
-                    )] + [
-    Kontakt(username=random_string("username", 10),
-            middle_name=random_string("middlename", 10),
-            last_name=random_string("lastname", 10),
-            nickname=random_string("nickname", 10),
-            title=random_string("title", 10),
-            company=random_string("company", 10),
-            address=random_string("address", 10),
-            home=random_telephone(10),
-            mobile=random_telephone(10),
-            work=random_telephone(10),
-            fax=random_telephone(10),
-            email=random_string("email", 10),
-            email2=random_string("email2", 10),
-            email3=random_string("email3", 10),
-            homepage=random_string("homepage", 10),
+#                    secondary_address2="",
+#                    secondary_home2="",
+#                    secondary_notes=""
+#                    )] + [
+#    Kontakt(username=random_string("username", 10),
+#            middle_name=random_string("middlename", 10),
+#            last_name=random_string("lastname", 10),
+#            nickname=random_string("nickname", 10),
+#            title=random_string("title", 10),
+#            company=random_string("company", 10),
+#            address=random_string("address", 10),
+#            home=random_telephone(10),
+#            mobile=random_telephone(10),
+#            work=random_telephone(10),
+#            fax=random_telephone(10),
+#            email=random_string("email", 10),
+#            email2=random_string("email2", 10),
+#            email3=random_string("email3", 10),
+#            homepage=random_string("homepage", 10),
 
-            bday=random_day(),
-            bmonth=random_month(),
-            byear=random_year(),
+#            bday=random_day(),
+#            bmonth=random_month(),
+#            byear=random_year(),
 
-            aday=random_day(),
-            amonth=random_month(),
-            ayear=random_year(),
+#            aday=random_day(),
+#            amonth=random_month(),
+#            ayear=random_year(),
 
-            secondary_address2=random_string("address2", 10),
-            secondary_home2=random_telephone(10),
-            secondary_notes=random_string("notes", 10))
-    for i in range(1)
-]
+#            secondary_address2=random_string("address2", 10),
+#            secondary_home2=random_telephone(10),
+#            secondary_notes=random_string("notes", 10))
+#    for i in range(1)
+#]
 
-@pytest.mark.parametrize("kontaktpr", testdata, ids=[repr(x) for x in testdata])
-def test_add_kontakt_gen(app, kontaktpr):
+#@pytest.mark.parametrize("kontaktpr", testdata, ids=[repr(x) for x in testdata])
+# Указывать data_kontakts (фиксированные данные) или json_kontakts (сгенерированные из файла).
+def test_add_kontakt_gen(app, json_kontakts):
+    kontaktpr = json_kontakts
     #pass
     # добавляем тестовые данные
     # добаляем цикл данных
