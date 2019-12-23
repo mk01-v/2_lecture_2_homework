@@ -1,4 +1,4 @@
-from model.group import Group
+from model.kontakt import Kontakt
 import random
 import string
 import os.path
