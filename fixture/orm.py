@@ -18,6 +18,7 @@ class ORMFixture:
         id = PrimaryKey(int, column='group_id')
         name = Optional(str, column='group_name')
         header = Optional(str, column='group_header')
+        kontakts = Set(lambda: ORMFixture.ORMKontakt, table="address_in_groups", column="id", reverse="groups", lazy=True)
 
     class ORMKontakt(db.Entity):
         _table_ = 'addressbook'
@@ -25,6 +26,7 @@ class ORMFixture:
         firstname = Optional(str, column='firstname')
         lastname = Optional(str, column='lastname')
         deprecated = Optional(datetime, column='deprecated')
+        groups = Set(lambda: ORMFixture.ORMGroup, table="address_in_groups", column="group_id", reverse="kontakts", lazy=True)
 
     # привязка к БД.
     def __init__(self, host, name, user, password):
@@ -54,3 +56,13 @@ class ORMFixture:
     @db_session
     def get_kontact_list(self):
         return self.convert_kontakts_to_model(select(c for c in ORMFixture.ORMKontakt if c.deprecated is None))
+
+    @db_session
+    def get_kontakts_in_group(self, group):
+        orm_group = list(select(g for g in ORMFixture.ORMGroup if g.id == group.id))[0]
+        return self.convert_groups_to_model(orm_group.kontakts)
+
+
+
+
+
