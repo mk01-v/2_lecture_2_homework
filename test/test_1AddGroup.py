@@ -20,25 +20,44 @@ from model.group import Group
 #    for header in ["", random_string("header", 20)]
 #]
 
-#@pytest.mark.parametrize("group", testdata, ids=[repr(x) for x in testdata])
-def test_add_group(app, json_groups):
+def test_add_group(app, db, json_groups):
     group = json_groups
     #pass
     # добавляем тестовые данные
     # добаляем цикл данных
     #объявляем старый список групп.
-    old_groups = app.group.get_group_list()
+    # добавили загрузку из БД для ускорения.
+    old_groups = db.get_group_list_db()
     # теперь строка загрузки данных не нужна.
     #group = Group(name="group_name_cool", header="group_header_cool_logo")
     app.group.create(group)
     #Проверки со слова assert. Условие выполнилось, т.к. создалась 1 группа. Сравниваем длину 2-х списков.
-    assert len(old_groups) + 1 == app.group.count()
-    new_groups = app.group.get_group_list()
+    # добавили загрузку из БД для ускорения.
+    new_groups = db.get_group_list_db()
     old_groups.append(group)
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
     # Проверка что остаемся в сессии.
     #app.session.logout()
 
+
+#@pytest.mark.parametrize("group", testdata, ids=[repr(x) for x in testdata])
+#def test_add_group(app, json_groups):
+#    group = json_groups
+#    #pass
+#    # добавляем тестовые данные
+#    # добаляем цикл данных
+#    #объявляем старый список групп.
+#    old_groups = app.group.get_group_list()
+#    # теперь строка загрузки данных не нужна.
+#    #group = Group(name="group_name_cool", header="group_header_cool_logo")
+#    app.group.create(group)
+#    #Проверки со слова assert. Условие выполнилось, т.к. создалась 1 группа. Сравниваем длину 2-х списков.
+#    assert len(old_groups) + 1 == app.group.count()
+#    new_groups = app.group.get_group_list()
+#    old_groups.append(group)
+#    assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
+#    # Проверка что остаемся в сессии.
+#    #app.session.logout()
 
 #def test_add_group(app):
 #    #объявляем старый список групп.
