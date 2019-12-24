@@ -1,14 +1,30 @@
-from fixture.db import DbFixture
+from fixture.orm import ORMFixture
 
-db = DbFixture(host="127.0.0.1", name="addressbook", user="root", password="")
-# проверка загрузки данных контактов.
+db = ORMFixture(host="127.0.0.1", name="addressbook", user="root", password="")
 try:
-    kontakts = db.get_kontakt_list_db()
-    for kontakt in kontakts:
-        print(kontakt)
-    print(len(kontakts))
+    l = db.get_kontact_list()
+    for item in l:
+        print(item)
+    print(len(l))
 finally:
-    db.destroy()
+    pass #db.destroy()
+
+
+
+
+
+#---------------------------------------------------------------------------
+#from fixture.db import DbFixture
+#
+#db = DbFixture(host="127.0.0.1", name="addressbook", user="root", password="")
+## проверка загрузки данных контактов.
+#try:
+#    kontakts = db.get_kontakt_list_db()
+#    for kontakt in kontakts:
+#        print(kontakt)
+#    print(len(kontakts))
+#finally:
+#    db.destroy()
 
 
 #--------------------------------------
