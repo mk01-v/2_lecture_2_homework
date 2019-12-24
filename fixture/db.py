@@ -2,6 +2,7 @@ import mysql.connector
 from model.group import Group
 
 class DbFixture:
+    # autocommit=True кэш после каждого запроса сбрасывается.
 
     def __init__(self, host, name, user, password):
         self.host = host
@@ -11,7 +12,8 @@ class DbFixture:
         self.connection = mysql.connector.connect(host=host,
                                                   database=name,
                                                   user=user,
-                                                  password=password)
+                                                  password=password,
+                                                  autocommit=True)
 
     # получение списка из БД.
     def get_group_list_db(self):
