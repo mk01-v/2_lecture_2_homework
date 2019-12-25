@@ -97,9 +97,9 @@ def test_modif_kontakt2(app):
                                       ayear="2000"))
 
 # работает только при одном параметре
-def test_modif_kontakt_list(app):
+def test_modif_kontakt_list(app, db):
     if app.kontakt.count_kontakt() == 0:
-        app.kontakt.create_kontakt(Kontakt(#username="11111",
+        app.kontakt.create_kontakt(Kontakt(username="11111",
                                            #middle_name="11111",
                                            last_name="11111"
                                            #nickname="11111",
@@ -129,11 +129,25 @@ def test_modif_kontakt_list(app):
                                             ))
     old_kontakts = app.kontakt.get_kontakt_list()
     index = randrange(len(old_kontakts))
-    Kontakt_peremen = Kontakt(last_name="qqqq")
+    Kontakt_peremen = Kontakt(username='++++', last_name="++++")
     Kontakt_peremen.id = old_kontakts[index].id
     app.kontakt.modif_kontakt_by_index(index, Kontakt_peremen)
     new_kontakts = app.kontakt.get_kontakt_list()
     assert len(old_kontakts) == len(new_kontakts)
     old_kontakts[index] = Kontakt_peremen
     assert sorted(old_kontakts, key=Kontakt.id_or_max_kontakt) == sorted(new_kontakts, key=Kontakt.id_or_max_kontakt)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
