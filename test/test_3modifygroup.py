@@ -19,15 +19,15 @@ from random import randrange
 #    assert len(old_groups) == len(new_groups)
 
 # новая модификация теста. 4 занятие 9-10 лекция.
-def test_modifgroup_name_list(app):
+def test_modifgroup_name_list(app, db):
     if app.group.count() == 0:
         app.group.create(Group(name="ЙЙЙ", header="ЙЙЙ"))
-    old_groups = app.group.get_group_list()
+    old_groups = db.get_group_list_db()
     index = randrange(len(old_groups))
     group = Group(name="New_group")
     group.id = old_groups[index].id
     app.group.modify_group_by_index(index, group)
-    new_groups = app.group.get_group_list()
+    new_groups = db.get_group_list_db()
     assert len(old_groups) == len(new_groups)
     old_groups[index] = group
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
