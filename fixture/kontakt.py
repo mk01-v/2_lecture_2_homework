@@ -85,15 +85,16 @@ class KontaktHelper:
     def modif_kontakt_by_index(self, index, kontakt):
         wd = self.app.wd
         self.open_home_kontakt_page()
-        self.select_kontakt_by_index(index)
-        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        #self.select_kontakt_by_index(index)
+        wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
         self.fill_kontakt_form(kontakt)
         wd.find_element_by_name("update").click()
+        self.open_home_kontakt_page()
         self.kontakt_cache = None
 
     def select_kontakt_by_index(self, index):
         wd = self.app.wd
-        self.open_home_kontakt_page()
+        #self.open_home_kontakt_page()
         wd.find_elements_by_name("selected[]")[index].click()
 
     def delete_kontakt(self):
