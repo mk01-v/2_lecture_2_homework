@@ -3,6 +3,7 @@ import pytest
 import random
 import string
 
+
 def test_add_kontakt_firefox(app):
     app.kontakt.create_kontakt(Kontakt(username="First_name: Artur",
                                        middle_name="Middle_name: 123",
@@ -158,19 +159,19 @@ def test_add_kontakt_list(app):
 
 #@pytest.mark.parametrize("kontaktpr", testdata, ids=[repr(x) for x in testdata])
 # Указывать data_kontakts (фиксированные данные) или json_kontakts (сгенерированные из файла).
-def test_add_kontakt_gen(app, json_kontakts):
+def test_add_kontakt_gen(app, db, json_kontakts):
     kontaktpr = json_kontakts
     #pass
     # добавляем тестовые данные
     # добаляем цикл данных
     #объявляем старый список групп.
-    old_kontakt = app.kontakt.get_kontakt_list()
+    old_kontakt = db.get_kontakt_list_db()
     # теперь строка загрузки данных не нужна.
     #group = Group(name="group_name_cool", header="group_header_cool_logo")
     app.kontakt.create_kontakt(kontaktpr)
     #Проверки со слова assert. Условие выполнилось, т.к. создалась 1 группа. Сравниваем длину 2-х списков.
     assert len(old_kontakt) + 1 == app.kontakt.count_kontakt()
-    new_kontakt = app.kontakt.get_kontakt_list()
+    new_kontakt = db.get_kontakt_list_db()
     old_kontakt.append(kontaktpr)
     #assert sorted(old_kontakt) == sorted(new_kontakt)
     assert sorted(old_kontakt, key=Kontakt.id_or_max_kontakt) == sorted(new_kontakt, key=Kontakt.id_or_max_kontakt)
