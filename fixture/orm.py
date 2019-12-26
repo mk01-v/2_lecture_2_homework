@@ -3,7 +3,7 @@ from datetime import datetime
 from model.group import Group
 from model.kontakt import Kontakt
 # в новой версии pony имеется нормальное преобразование данных, написано без дополнений. "#, conv=decoders)"
-from pymysql.converters import decoders
+#from pymysql.converters import decoders
 
 # другая техника взаимодействия с БД "ORM", чтобы не учить язык sql.
 # позволяет установить соответствия с классами и таблицами в БД.
@@ -31,7 +31,7 @@ class ORMFixture:
     # привязка к БД.
     def __init__(self, host, name, user, password):
         # 1 - параметр тип базы данных.
-        self.db.bind('mysql', host=host, database=name, user=user, password=password, conv=decoders)
+        self.db.bind('mysql', host=host, database=name, user=user, password=password) #, conv=decoders)
         self.db.generate_mapping()
         sql_debug(True)
 

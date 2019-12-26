@@ -39,7 +39,7 @@ class DbFixture:
             for row in cursor:
                 # в каком порядке выстроить параметры.
                 (id, firstname, lastname) = row
-                list.append(Kontakt(id=str(id)))
+                list.append(Kontakt(id=str(id), username=firstname, last_name=lastname))
         finally:
             cursor.close()
         return list
