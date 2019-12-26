@@ -121,7 +121,6 @@ class KontaktHelper:
         self.return_to_main_home()
         self.kontakt_cache = None
 
-#--------------------------------------------------------------------------------------------------------------
     def select_kontakt_by_id(self, id):
         wd = self.app.wd
         wd.find_element_by_css_selector("input[value='%s']" % id).click()
@@ -137,6 +136,26 @@ class KontaktHelper:
         self.return_to_main_home()
         self.kontakt_cache = None
 
+#-----------------------------------------------------------------
+    # поместить случайный выбранный контакт в группу
+    # выбрать чек-бокс у take_kontakt
+    # выбрать группу
+    # нажать кнопку "add to".
+
+    def add_kontakt_in_group(self, id, name_group):
+        wd = self.app.wd
+        self.open_home_kontakt_page()
+        # выбрали группу с id
+        self.select_kontakt_by_id(id)
+        # выбрали группу из существующего списка
+        wd.find_element_by_name("to_group").click()
+        Select(app.find_element_by_name("to_group")).select_by_visible_text(name_group)
+        # добавили в группу
+        wd.find_element_by_xpath("//input[@value='Add to']").click()
+        self.open_home_kontakt_page()
+
+
+#-----------------------------------------------------------------
     def return_to_main_home(self):
         wd = self.app.wd
         # return groups page
@@ -269,7 +288,6 @@ class KontaktHelper:
                        work=work,
                        secondary_home2=secondary_home2)
 
-    #--------------------------------------
 
 
 
