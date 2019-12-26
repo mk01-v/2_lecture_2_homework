@@ -1,4 +1,5 @@
 from model.group import Group
+from selenium.webdriver.support.ui import Select
 
 
 class GroupHelper:
