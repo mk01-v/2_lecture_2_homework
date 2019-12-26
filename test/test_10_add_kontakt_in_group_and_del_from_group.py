@@ -17,4 +17,3 @@ def test_add_kontakt_in_group(app, db):
     # переход на группу
     app.kontakt.go_to_group(take_group.name)
     # assert с БД
-    
