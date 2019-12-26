@@ -121,6 +121,22 @@ class KontaktHelper:
         self.return_to_main_home()
         self.kontakt_cache = None
 
+#--------------------------------------------------------------------------------------------------------------
+    def select_kontakt_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element_by_css_selector("input[value='%s']" % id).click()
+
+    def delete_kontakt_by_id(self, id):
+        wd = self.app.wd
+        self.open_home_kontakt_page()
+        self.select_kontakt_by_id(id)
+        # submit deletion
+        wd.find_element_by_xpath("//input[@value='Delete']").click()
+        # закрытие диалогового окна подтверждением.
+        wd.switch_to_alert().accept()
+        self.return_to_main_home()
+        self.kontakt_cache = None
+
     def return_to_main_home(self):
         wd = self.app.wd
         # return groups page
