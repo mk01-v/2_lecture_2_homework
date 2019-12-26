@@ -92,6 +92,16 @@ class KontaktHelper:
         self.open_home_kontakt_page()
         self.kontakt_cache = None
 
+    def modif_kontakt_by_id(self, id, kontact):
+        wd = self.app.wd
+        self.open_home_kontakt_page()
+        # open kontakt by id
+        wd.find_element_by_css_selector("a[href='edit.php?id=%s']" % id).click()
+        self.fill_kontakt_form(kontact)
+        wd.find_element_by_xpath("//input[@value='Update']").click()
+        self.open_home_kontakt_page()
+        self.kontakt_cache = None
+
     def select_kontakt_by_index(self, index):
         wd = self.app.wd
         #self.open_home_kontakt_page()
@@ -243,7 +253,7 @@ class KontaktHelper:
                        work=work,
                        secondary_home2=secondary_home2)
 
-
+    #--------------------------------------
 
 
 
