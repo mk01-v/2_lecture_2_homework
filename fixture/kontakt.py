@@ -149,7 +149,7 @@ class KontaktHelper:
         self.select_kontakt_by_id(id)
         # выбрали группу из существующего списка
         wd.find_element_by_name("to_group").click()
-        Select(app.find_element_by_name("to_group")).select_by_visible_text(name_group)
+        Select(wd.find_element_by_name("to_group")).select_by_visible_text(name_group)
         # добавили в группу
         wd.find_element_by_xpath("//input[@value='Add to']").click()
         self.open_home_kontakt_page()
