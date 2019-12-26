@@ -53,6 +53,7 @@ class ORMFixture:
             return Kontakt(id=str(kontakt.id), username=kontakt.firstname, last_name=kontakt.lastname)
         return list(map(convert, kontakts))
 
+    @db_session
     def get_kontact_list(self):
         return self.convert_kontakts_to_model(select(c for c in ORMFixture.ORMKontakt if c.deprecated is None))
 
@@ -61,7 +62,11 @@ class ORMFixture:
         orm_group = list(select(g for g in ORMFixture.ORMGroup if g.id == group.id))[0]
         return self.convert_kontakts_to_model(orm_group.kontakts)
 
-
+    @db_session
+    def get_kontakts_not_in_group(self, group):
+        orm_group = list(select(g for g in ORMFixture.ORMGroup if g.id == group.id))[0]
+        return self.convert_kontakts_to_model(
+            select(c for c in ORMFixture.ORMKontakt if c.deprecated is None and orm_group not in c.groups))
 
 
 
