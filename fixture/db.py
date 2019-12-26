@@ -39,7 +39,20 @@ class DbFixture:
             for row in cursor:
                 # в каком порядке выстроить параметры.
                 (id, firstname, lastname) = row
-                list.append(Kontakt(id=str(id), username=firstname, last_name=lastname))
+                list.append(Kontakt(id=str(id)))
+        finally:
+            cursor.close()
+        return list
+
+    def get_group_id_db(self):
+        list = []
+        cursor = self.connection.cursor()
+        try:
+            cursor.execute("select id from address_in_groups where deprecated='0000-00-00 00:00:00'")
+            for row in cursor:
+                # в каком порядке выстроить параметры.
+                (id) = row
+                list.append(Kontakt(id=str(id)))
         finally:
             cursor.close()
         return list
