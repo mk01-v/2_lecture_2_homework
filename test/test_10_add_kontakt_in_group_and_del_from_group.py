@@ -54,8 +54,13 @@ def test_add_kontakt_in_group(app, db):
     #app.kontakt.go_to_group(take_group.name)
     # assert с БД
     test = ORMFixture(host="127.0.0.1", name="addressbook", user="root", password="")
-    #id_from_take_group = test.convert_groups_to_model(Group(id=take_group.id))
-    #assert take_kontakt == id_from_take_group
     assert take_kontakt in test.get_kontakts_in_group(Group(id=take_group.id))
+
+    # 1. take_kontakt.id, 2. Получаем доступ к базе test, используем функции.
+    # 3. test.get_kontakts_in_group(take_group)) - получаем данные группы.
+    # 4. lambda x: x.id - получаем id из данных группы.
+    # 5. filter(lambda) - находим те записи, в которых есть совспадение.
+    # 6. Преобразуем в list (список).
+    assert take_kontakt == list(filter(lambda x: x.id == take_kontakt.id, test.get_kontakts_in_group(take_group)))[0]
     
 
