@@ -11,7 +11,8 @@ class DbFixture:
         self.connection = mysql.connector.connect(host=host,
                                                   database=name,
                                                   user=user,
-                                                  password=password)
+                                                  password=password,
+                                                  autocommit=True)
 
     # получение списка из БД.
     def get_group_list_db(self):
