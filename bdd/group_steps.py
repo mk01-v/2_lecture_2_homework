@@ -35,7 +35,28 @@ def random_group(non_empty_group_list):
 
 @when('I delete the group from the list')
 def delete_group(app, random_group):
-    app.group.app.group.delete_group_by_index(random_group.id)
+    app.group.app.group.delete_group_by_id(random_group.id)
 
 @then('the new list is equal to the old list without the deleted group')
-    def verify_group_deleted(db, non_empty_group_list, random_group):
+    def verify_group_deleted(db, non_empty_group_list, random_group, app, check_ui):
+        old_groups = non_empty_group_list
+        new_groups = db.get_group_list_db()
+        assert len(old_groups) - 1 == len(new_groups)
+        old_groups.remove(random_group)
+        assert old_groups == new_groups
+        # edit configuration - additional arguments - --check_ui
+        # отключаемая проверка.
+        if check_ui:
+            assert sorted(new_groups, key=Group.id_or_max) == sorted(app.group.get_group_list(), key=Group.id_or_max)
+
+
+
+
+
+
+
+
+
+
+
+
