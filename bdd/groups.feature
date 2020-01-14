@@ -9,3 +9,10 @@ Examples:
   |name|header|
   |name1|header1|
   |name2|header2|
+
+
+Scenario: Delete a group
+  Given a non-empty group list
+  Given a random group from the list
+  When I delete the group from the list
+  Then the new list is equal to the old list without the deleted group
