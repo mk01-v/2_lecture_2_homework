@@ -1,60 +1,60 @@
 [ {
-  "uid" : "11ab2561d9ad50c9",
-  "name" : "test_add_group[None:name61:headerfoePk]",
-  "time" : {
-    "start" : 1579151066086,
-    "stop" : 1579151067538,
-    "duration" : 1452
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "946805ffde366321",
-  "name" : "test_add_group[None::]",
-  "time" : {
-    "start" : 1579151060399,
-    "stop" : 1579151061939,
-    "duration" : 1540
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "21e129a0baf68625",
+  "uid" : "9e510e1ecb9be2ca",
   "name" : "test_add_group[None:namekLN:headerYlxQpbnV26]",
   "time" : {
-    "start" : 1579151064625,
-    "stop" : 1579151065922,
-    "duration" : 1297
+    "start" : 1579154634283,
+    "stop" : 1579154635241,
+    "duration" : 958
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "f04ccc113d4bfcc5",
+  "uid" : "65e6409f55ba15ea",
+  "name" : "test_add_group[None::]",
+  "time" : {
+    "start" : 1579154630610,
+    "stop" : 1579154631927,
+    "duration" : 1317
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "2e7963b108e49485",
+  "name" : "test_add_group[None:name61:headerfoePk]",
+  "time" : {
+    "start" : 1579154635327,
+    "stop" : 1579154636374,
+    "duration" : 1047
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "4d94b015f9e8cb2b",
   "name" : "test_add_group[None:nameR2:headerGJ99EuPJ]",
   "time" : {
-    "start" : 1579151067686,
-    "stop" : 1579151068795,
-    "duration" : 1109
+    "start" : 1579154636463,
+    "stop" : 1579154637486,
+    "duration" : 1023
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "fc968b8759515c72",
+  "uid" : "ca5783f75b4def",
   "name" : "test_add_group[None:nameKeEdE:headero9]",
   "time" : {
-    "start" : 1579151063247,
-    "stop" : 1579151064468,
-    "duration" : 1221
+    "start" : 1579154633219,
+    "stop" : 1579154634208,
+    "duration" : 989
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "98bd0f1873c50bff",
+  "uid" : "5becff5f533bb24",
   "name" : "test_add_group[None:name:headeraiVB3zkb]",
   "time" : {
-    "start" : 1579151062050,
-    "stop" : 1579151063154,
-    "duration" : 1104
+    "start" : 1579154632066,
+    "stop" : 1579154633126,
+    "duration" : 1060
   },
   "status" : "passed",
   "severity" : "normal"

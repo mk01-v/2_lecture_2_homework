@@ -1,5 +1,6 @@
 from model.group import Group
-
+import pytest
+import allure
 
 
 
@@ -23,22 +24,14 @@ from model.group import Group
 
 def test_add_group(app, db, json_groups):
     group = json_groups
-    #pass
-    # добавляем тестовые данные
-    # добаляем цикл данных
-    #объявляем старый список групп.
-    # добавили загрузку из БД для ускорения.
-    old_groups = db.get_group_list_db()
-    # теперь строка загрузки данных не нужна.
-    #group = Group(name="group_name_cool", header="group_header_cool_logo")
-    app.group.create(group)
-    #Проверки со слова assert. Условие выполнилось, т.к. создалась 1 группа. Сравниваем длину 2-х списков.
-    # добавили загрузку из БД для ускорения.
-    new_groups = db.get_group_list_db()
-    old_groups.append(group)
-    assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
-    # Проверка что остаемся в сессии.
-    #app.session.logout()
+    with allure.step('Given a group list'):
+        old_groups = db.get_group_list_db()
+    with allure.step('When I add the group to the list'):
+        app.group.create(group)
+    with allure.step('Then the new group list is equal to the old list with the added group'):
+        new_groups = db.get_group_list_db()
+        old_groups.append(group)
+        assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
 
 
 #@pytest.mark.parametrize("group", testdata, ids=[repr(x) for x in testdata])
