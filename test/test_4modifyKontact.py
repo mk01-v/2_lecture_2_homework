@@ -171,7 +171,7 @@ def test_modif_kontakt_list(app, db):
                                             ))
     old_kontakts = db.get_kontakt_list_db()
     take_kontakt = random.choice(old_kontakts)
-    Kontakt_peremen = Kontakt(username='USERS_test', last_name="LAST_NAME_test")
+    Kontakt_peremen = Kontakt(username='USERS_test', last_name="LAST_NAME_test", nickname="NICKNAME_test", email="EMAIL_test")
     Kontakt_peremen.id = take_kontakt.id
     app.kontakt.modif_kontakt_by_id(take_kontakt.id, Kontakt_peremen)
     new_kontakts = db.get_kontakt_list_db()

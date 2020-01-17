@@ -49,7 +49,7 @@ def random_month():
                             'August', 'September', 'October', 'November', 'December']))
 
 def random_year():
-    return str(random.choice([1900, 2019]))
+    return str(random.randint(1900, 2019))
 
 
 #Вводимые данные

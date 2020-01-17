@@ -34,3 +34,6 @@ def merge_email_like_on_home_page(kontakt):
 def clear(s):
     # 1 параметр что убираем, 2 на что, 3 параметр где заменять.
     return re.sub("[() -]", "", s)
+
+
+
