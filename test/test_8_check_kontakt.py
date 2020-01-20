@@ -35,5 +35,9 @@ def clear(s):
     # 1 параметр что убираем, 2 на что, 3 параметр где заменять.
     return re.sub("[() -]", "", s)
 
+# Описание map, аналог описания MAP.
+# l = [Point(i, i*i for i in range (-5,6)]
+# list(map(lambda i: Point(i,i*i), range(5,6)))
+
 
 
